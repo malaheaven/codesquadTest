@@ -37,14 +37,3 @@ def push_string(word,number,lr):
 
 
 print(push_string(word,number,lr))
-
-
-
-
-
-
-
-
-
-
-
