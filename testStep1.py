@@ -1,8 +1,5 @@
-word, number, lr = input("Write one word, one number, L(left) or R(right):").split(' ')
-number = int(number)
-
 def push_string(word,number,lr):
-
+    number = int(number)
 # -100이상 100미만 수 걸러내기
     if -100 <= number < 100:
 
@@ -36,4 +33,12 @@ def push_string(word,number,lr):
     return answer
 
 
-print(push_string(word,number,lr))
+if __name__ == '__main__':
+    while True:
+        try:
+            word, number, lr = input("Write one word, one number, L(left) or R(right):").split(' ')
+            print(push_string(word,number,lr))
+        except ValueError:
+            print("잘못 작성하셨습니다. 다시 입력해주세요.")
+            pass
+
