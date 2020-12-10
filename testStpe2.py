@@ -1,10 +1,11 @@
-cube_slice = [['R', 'R', 'W'],
-              ['G','C','W'],
-              ['G','B','B']]
+#초기 평면 큐브
+def initial_state():
+    initial_state = [['R', 'R', 'W'],
+                     ['G', 'C', 'W'],
+                     ['G', 'B', 'B']]
+    return initial_state
 
-for x,y,z in cube_slice:
-    print(x,y,z)
-
+#명령어 ' 유무 체크
 def check_inputstr(input_word):
     input_word_list = list()
     for i in range(0, len(input_word)):
@@ -16,6 +17,7 @@ def check_inputstr(input_word):
 
 
 def action_cube(action,cube_slice):
+    #가장 윗줄을 왼쪽으로 한 칸 밀기
     if action == "U":
         value1 = cube_slice[0][0]
         value2 = cube_slice[0][1]
@@ -25,6 +27,7 @@ def action_cube(action,cube_slice):
         cube_slice[0][1] = value3
         cube_slice[0][2] = value1
 
+    #가장 윗줄을 오른쪽으로 한 칸 밀기
     elif action == "U'":
         value1 = cube_slice[0][0]
         value2 = cube_slice[0][1]
@@ -34,6 +37,7 @@ def action_cube(action,cube_slice):
         cube_slice[0][1] = value1
         cube_slice[0][2] = value2
 
+    #가장 오른쪽 줄을 위로 한 칸 밀기
     elif action == "R":
         value1 = cube_slice[0][2]
         value2 = cube_slice[1][2]
@@ -44,6 +48,7 @@ def action_cube(action,cube_slice):
         cube_slice[2][2] = value1
 
 
+    #가장 오른쪽 줄을 아래로 한 칸 밀기
     elif action == "R'":
         value1 = cube_slice[0][2]
         value2 = cube_slice[1][2]
@@ -53,6 +58,7 @@ def action_cube(action,cube_slice):
         cube_slice[1][2] = value1
         cube_slice[2][2] = value2
 
+    #가장 왼쪽 줄을 아래로 한 칸 밀기
     elif action == "L":
         value1 = cube_slice[0][0]
         value2 = cube_slice[1][0]
@@ -62,6 +68,7 @@ def action_cube(action,cube_slice):
         cube_slice[1][0] = value1
         cube_slice[2][0] = value2
 
+    #가장 왼쪽 줄을 위로 한 칸 밀기
     elif action == "L'":
         value1 = cube_slice[0][0]
         value2 = cube_slice[1][0]
@@ -71,6 +78,7 @@ def action_cube(action,cube_slice):
         cube_slice[1][0] = value3
         cube_slice[2][0] = value1
 
+    #가장 아랫줄을 오른쪽으로 한 칸 밀기
     elif action == "B":
         value1 = cube_slice[2][0]
         value2 = cube_slice[2][1]
@@ -80,6 +88,7 @@ def action_cube(action,cube_slice):
         cube_slice[2][1] = value1
         cube_slice[2][2] = value2
 
+    #가장 아랫줄을 왼쪽으로 한 칸 밀기
     elif action == "B'":
         value1 = cube_slice[2][0]
         value2 = cube_slice[2][1]
@@ -91,22 +100,31 @@ def action_cube(action,cube_slice):
 
     return cube_slice
 
-while True:
-    input_word = str(input("CUBE > "))
+if __name__ == '__main__':
+    #초기 평면 큐브
+    cube_slice = initial_state()
 
-    input_word_list = check_inputstr(input_word)
+    #처음 초기 평면 큐브의 출력을 위해
+    for x, y, z in cube_slice:
+        print(x, y, z)
 
-    if input_word == "Q":
-        print("Bye~")
-        break
-    else:
-        for action in input_word_list:
-            print(action)
-            if action in ["U","U'","R","R'","L","L'","B","B'"]:
-                for x, y, z in action_cube(action,cube_slice):
-                    print(x, y, z)
-            else:
-                print("없는 동작입니다.")
+    while True:
+        input_word = str(input("CUBE > "))
+
+        input_word_list = check_inputstr(input_word)
+
+        if input_word == "Q":
+            print("Bye~")
+            break
+        else:
+            for action in input_word_list:
+                print(action)
+                #동작외 명령어는 실행할 수 없도록 만듬.
+                if action in ["U","U'","R","R'","L","L'","B","B'"]:
+                    for x, y, z in action_cube(action,cube_slice):
+                        print(x, y, z)
+                else:
+                    print("없는 동작입니다.")
 
 
 
