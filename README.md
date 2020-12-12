@@ -8,7 +8,7 @@ def initial_state():
 def action_cube(action,cube_slice):  
 #명령어 함수  
 
-check_inputstr(input_word):  
+def check_inputstr(input_word):  
 #split하면 '기호가 포함된 명령어 입력이 어려워 '가 포함된 명령어 구분을 위해 만든 함수  
 ~~~
 * 처음 시작하면 초기 상태를 출력하도록 구현함  
