@@ -119,7 +119,7 @@ if __name__ == '__main__':
         else:
             for action in input_word_list:
                 print(action)
-                #동작외 명령어는 실행할 수 없도록 만듬.
+                #동작외 명령어는 실행할 수 없도록 만듦.
                 if action in ["U","U'","R","R'","L","L'","B","B'"]:
                     for x, y, z in action_cube(action,cube_slice):
                         print(x, y, z)
