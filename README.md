@@ -11,3 +11,5 @@ branch 목록:
 * STEP-1
 * STEP-2
 
+일부분 구현 완료 목록:
+* STEP-3
